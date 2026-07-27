@@ -130,7 +130,8 @@ End with an interactive retell workspace, not only static text. It should includ
 - A 5-minute outline.
 - A textarea where the learner can draft their own explanation.
 - A checklist for center words, storyline, example, caveat, and "so what".
-- A small word/character count or progress indicator when possible.
+- A small word/character count or progress indicator.
+- A visible evaluation panel that scores whether the retell mentions the center words, storyline, concrete example, caveat, and "so what".
 - One stronger sample phrasing that the learner can compare against without copying.
 
 Use the `.retell-workbench` component pattern described below.
@@ -167,7 +168,7 @@ Add these summary-specific components:
 Use this shape when building the final module:
 
 ```html
-<div class="retell-workbench" data-retell-target="120">
+<div class="retell-workbench" data-retell-target="120" data-retell-criteria="中心词:...|剧情线:...|例子:...|误读风险:...">
   <div class="retell-prompts">
     <button class="btn btn-primary retell-prompt-btn" data-prompt="30s">30 秒</button>
     <button class="btn retell-prompt-btn" data-prompt="2m">2 分钟</button>
@@ -185,6 +186,18 @@ Use this shape when building the final module:
     <label><input type="checkbox"> 我提到了一个例子</label>
     <label><input type="checkbox"> 我避免了误读</label>
   </div>
+  <div class="retell-evaluation">
+    <div class="retell-score">
+      <span class="retell-score-value">0</span>
+      <span class="retell-score-label">retell score</span>
+    </div>
+    <ul class="retell-feedback">
+      <li class="todo" data-label="中心词" data-keywords="...">• 中心词</li>
+      <li class="todo" data-label="剧情线" data-keywords="...">• 剧情线</li>
+      <li class="todo" data-label="具体例子" data-keywords="...">• 具体例子</li>
+      <li class="todo" data-label="误读风险" data-keywords="...">• 误读风险</li>
+    </ul>
+  </div>
 </div>
 ```
 
@@ -195,6 +208,7 @@ The reused shell may include default browser buttons for chat playback. Replace 
 - Use the page accent color, subtle border, compact radius, and consistent typography.
 - Style `Next Message`, `Play All`, and `Reset` as real page controls, not unstyled HTML buttons.
 - Keep button text readable on mobile and prevent controls from overlapping message counters.
+- Put primary emphasis on `Next Message`; keep secondary playback buttons quieter but still visibly designed.
 
 ## Final Checks
 
@@ -205,6 +219,7 @@ The reused shell may include default browser buttons for chat playback. Replace 
 - Dialogue is helpful and source-grounded.
 - The page includes a fixed misread-risk section.
 - The final retell mode is practical and interactive, not motivational filler.
+- The retell mode includes visible self-evaluation feedback, not only a textarea and checklist.
 - The page does not show raw source ids, page numbers, metadata labels, or citation tags.
 - The page does not show a Xiaohei shot-list section unless the user explicitly requested image-generation planning.
 - Text fits on desktop and mobile.

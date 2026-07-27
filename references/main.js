@@ -501,7 +501,22 @@
     const count = $('.retell-count', workbench);
     const progress = $('.retell-progress', workbench);
     const currentPrompt = $('.retell-current-prompt', workbench);
+    const scoreValue = $('.retell-score-value', workbench);
+    const feedback = $('.retell-feedback', workbench);
     const target = Number(workbench.dataset.retellTarget || 120);
+    let criteria = $$('.retell-feedback [data-keywords]', workbench).map(el => ({
+      label: (el.dataset.label || el.textContent || '').replace(/^[✓•]\s*/, '').trim(),
+      words: (el.dataset.keywords || '').split(',').map(w => w.trim()).filter(Boolean)
+    })).filter(item => item.label && item.words.length);
+    if (!criteria.length) {
+      criteria = (workbench.dataset.retellCriteria || '')
+      .split('|')
+      .map(item => {
+        const parts = item.split(':');
+        return { label: (parts[0] || '').trim(), words: (parts[1] || '').split(',').map(w => w.trim()).filter(Boolean) };
+      })
+      .filter(item => item.label && item.words.length);
+    }
     const prompts = {
       '30s': 'Use one sentence for the thesis, two or three center words, and one misread to avoid.',
       '2m': 'Explain the premise, connect three center words, name the key turn, then add one caveat.',
@@ -518,6 +533,20 @@
       else if (chars < target * 0.4) progress.textContent = 'Add the center words and storyline.';
       else if (chars < target) progress.textContent = 'Now add a caveat or misread risk.';
       else progress.textContent = 'Good length. Check whether it sounds like your own words.';
+
+      if (criteria.length && scoreValue && feedback) {
+        let hits = 0;
+        const lower = text.toLowerCase();
+        const rows = criteria.map(item => {
+          const matched = item.words.some(word => lower.includes(word.toLowerCase()));
+          if (matched) hits++;
+          return '<li class="' + (matched ? 'pass' : 'todo') + '">' + (matched ? '✓ ' : '• ') + item.label + '</li>';
+        });
+        const lengthHit = chars >= target * 0.6;
+        const score = Math.round(((hits + (lengthHit ? 1 : 0)) / (criteria.length + 1)) * 100);
+        scoreValue.textContent = String(score);
+        feedback.innerHTML = rows.join('') + '<li class="' + (lengthHit ? 'pass' : 'todo') + '">' + (lengthHit ? '✓ ' : '• ') + '表达长度足够展开一个完整判断</li>';
+      }
     }
 
     $$('.retell-prompt-btn', workbench).forEach(btn => {

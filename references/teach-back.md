@@ -55,9 +55,10 @@ Make the final section interactive when building HTML. Include:
 - Three prompt buttons: 30 seconds, 2 minutes, 5 minutes.
 - A checklist that the learner can mark after drafting.
 - A character or word count.
+- A simple rubric/evaluation panel that checks whether the draft mentions the core ideas.
 - A short "compare against this, do not copy it" sample.
 
-The retell mode is not an auto-grader. It is a rehearsal surface that helps the learner notice whether their explanation contains the core ingredients.
+The retell mode is not a perfect auto-grader. It is a rehearsal surface that gives lightweight evidence: which core ingredients appear, which are missing, and whether the explanation is long enough to carry a complete thought.
 
 ## Self-Check Questions
 
