@@ -14,7 +14,7 @@ The generated summary focuses on:
 - the document's logic or narrative storyline
 - key turns where understanding changes
 - longer dialogue-style explanation
-- visual anchors or optional Xiaohei illustration planning
+- clean visual anchors, with Xiaohei-style images only when explicitly requested
 - 30-second, 2-minute, and 5-minute teach-back scaffolds
 
 It is intentionally shorter than a full course. If `document-to-course` is for learning step by step, this skill is for quickly grasping the document and retelling it clearly.
@@ -106,6 +106,8 @@ The final `index.html` opens directly in a browser. No dev server is required.
 - Extract center words by meaning, not just frequency.
 - Show the logic or narrative movement before details.
 - Use dialogue to clarify confusion, not as decoration.
+- Keep the learner-facing page free of raw source tags, page-number markers, and metadata labels.
+- Do not show a Xiaohei shot list by default; generate Xiaohei-style images only when the user explicitly asks for them.
 - End with teach-back scaffolds so the learner can retell the document.
 
 ## Validation

@@ -1,6 +1,6 @@
 ---
 name: document-to-study-summary
-description: "Turn documents, PDFs, DOCX files, Markdown notes, web pages, reports, courses, novels, essays, manuals, or document folders into a concise source-grounded study summary page. Use when someone wants to quickly understand a document, extract central words or themes, connect ideas in a logical or narrative storyline, make a visual learning summary, create a longer dialogue-style explanation, generate optional Xiaohei-style illustration prompts/images, or help the learner retell the document in their own words."
+description: "Turn documents, PDFs, DOCX files, Markdown notes, web pages, reports, courses, novels, essays, manuals, or document folders into a concise source-grounded study summary page. Use when someone wants to quickly understand a document, extract central words or themes, connect ideas in a logical or narrative storyline, make a clean visual learning summary, create a longer dialogue-style explanation, optionally generate Xiaohei-style images when explicitly requested, or help the learner retell the document in their own words."
 ---
 
 # Document To Study Summary
@@ -15,7 +15,7 @@ When the skill is triggered and the user has not provided a document, course, fo
 
 > I can turn a document or course into a concise study summary page.
 >
-> Point me at a PDF, DOCX, Markdown file, web page, notes folder, or generated course. I will extract the central words, connect them into the document's logic or storyline, build a short interactive page, optionally suggest or generate Xiaohei-style illustrations, and end with a teach-back script so you can explain it in your own words.
+> Point me at a PDF, DOCX, Markdown file, web page, notes folder, or generated course. I will extract the central words, connect them into the document's logic or storyline, build a clean interactive page, and end with a teach-back script so you can explain it in your own words.
 
 If the user says "this document", "this course", "this page", or similar, use the attached file, current browser page, or current working directory as the source when available.
 
@@ -24,7 +24,8 @@ If the user says "this document", "this course", "this page", or similar, use th
 - Ground every substantive point in the source.
 - Prefer paraphrase and synthesis over long quotation.
 - For copyrighted long-form works, do not reconstruct the whole source as a substitute for reading it. Teach structure, themes, logic, and selected short anchors.
-- Preserve source locators: file name, heading, PDF page, module title, section title, or URL.
+- Track source locators internally: file name, heading, PDF page, module title, section title, or URL.
+- Do not show technical source labels in the final learner page, such as `S1`, `p. 6`, `pp. 8-25`, `Source:`, `metadata`, or raw locator tags. Use source locators for grounding and verification, not as visible study-summary copy.
 - Separate source facts from interpretation when the distinction matters.
 - Make the output concise enough to scan, but rich enough to support retelling.
 - Build the summary page after analysis; do not stop at an outline unless the user asks for one.
@@ -68,7 +69,7 @@ Default structure: 3-5 sections, not a full course.
 1. **Center Words**: the few terms that unlock the document.
 2. **Logic Or Storyline**: a because/therefore chain, argument path, process, or narrative arc.
 3. **Long Dialogue**: 8-14 short messages between learner, explainer, skeptic, author, practitioner, character, or domain expert.
-4. **Visual Anchors**: concept map, timeline, or optional Xiaohei illustration shot list/images.
+4. **Visual Anchors**: concept map, timeline, or generated Xiaohei-style images only when explicitly requested.
 5. **Teach-Back**: 30-second, 2-minute, and 5-minute retell scaffolds.
 
 For layout and interaction patterns, read `references/page-design.md`.
@@ -77,8 +78,8 @@ For layout and interaction patterns, read `references/page-design.md`.
 
 Use Xiaohei-style illustrations only when they help the learner remember a central idea, turn, contradiction, or storyline.
 
-- If the user asks for images, use the `ian-xiaohei-illustrations` skill if available. Read its `SKILL.md` and relevant references before generating images.
-- If the user did not explicitly ask to generate images, include a concise Xiaohei shot list instead of generating.
+- If the user asks for images or specifically asks to use the Xiaohei illustration skill, use the `ian-xiaohei-illustrations` skill if available. Read its `SKILL.md` and relevant references before generating images.
+- If the user did not explicitly ask to generate images, do not include a visible "Xiaohei", "小黑配图", or "Shot List" section in the page. Use a concept map, timeline, or plain visual-anchor cards instead.
 - Do not decorate every section. Choose 1-3 visual anchors for short summaries and 3-5 for long documents.
 
 For visual selection rules, read `references/xiaohei-visuals.md`.
@@ -111,8 +112,9 @@ Final checks:
 - Logic/storyline is visible before details.
 - Dialogue is long enough to resolve confusion, not just decorative.
 - The final section helps the learner explain the document without copying wording.
-- Source locators are present for important claims.
-- Optional images or image prompts serve memory, not decoration.
+- Important claims were checked against source locators internally, but the final page does not expose page numbers or raw source tags.
+- Optional images serve memory, not decoration, and are generated only after the user asks for them.
+- Chat controls such as Next Message, Play All, and Reset match the page's visual style; never leave browser-default buttons in the final page.
 - `index.html` opens without a dev server.
 
 ## Reference Files

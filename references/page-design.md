@@ -62,7 +62,7 @@ Then show 5-9 center words as cards. Each card should include:
 - Word.
 - Plain-language meaning.
 - Why it unlocks the document.
-- Source locator.
+- No visible source/page tag.
 
 ### 2. Logic Or Storyline
 
@@ -92,18 +92,19 @@ Dialogue should:
 
 - Resolve at least two likely confusions.
 - Connect center words back to the storyline.
-- Include source locators in or near the dialogue section.
+- Stay source-grounded without showing raw page numbers or source ids.
 - Avoid becoming a generic Q&A detached from the document.
 
 ### 4. Visual Anchors
 
 Include either:
 
-- A shot list for Xiaohei-style illustrations.
-- Generated images, when explicitly requested or clearly useful and feasible.
-- A simple concept map/timeline if images are not generated.
+- A simple concept map, timeline, comparison strip, or visual-anchor cards.
+- Generated Xiaohei-style images only when the user explicitly asks for images or asks to use the Xiaohei illustration skill.
 
 Each visual anchor must help memory or retelling.
+
+Do not include a visible "Xiaohei", "小黑配图", or "Shot List" section by default. If images are generated, present the images where they support the corresponding center word or storyline turn.
 
 ### 5. Teach-Back
 
@@ -127,7 +128,15 @@ Use existing shell components:
 - `chat-window`: long dialogue.
 - `quiz-container`: self-check questions.
 - `term`: glossary tooltip for first-use terms.
-- `callout`: thesis, caveat, or source note.
+- `callout`: thesis, caveat, or learner-facing note.
+
+## Control Styling
+
+The reused shell may include default browser buttons for chat playback. Replace or override them so they match the summary page:
+
+- Use the page accent color, subtle border, compact radius, and consistent typography.
+- Style `Next Message`, `Play All`, and `Reset` as real page controls, not unstyled HTML buttons.
+- Keep button text readable on mobile and prevent controls from overlapping message counters.
 
 ## Final Checks
 
@@ -137,5 +146,7 @@ Use existing shell components:
 - No section is a wall of text.
 - Dialogue is helpful and source-grounded.
 - The final teach-back section is practical, not motivational filler.
+- The page does not show raw source ids, page numbers, metadata labels, or citation tags.
+- The page does not show a Xiaohei shot-list section unless the user explicitly requested image-generation planning.
 - Text fits on desktop and mobile.
 - The page opens from `index.html` without a server.

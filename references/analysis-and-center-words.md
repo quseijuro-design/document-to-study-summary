@@ -15,7 +15,15 @@ Track each source with a stable id:
   scope: what this source appears to cover
 ```
 
-Display human-readable locators in the final page, such as `Source: report.pdf, p. 12` or `Source: course index.html, Module 3`.
+Use locators internally to keep the summary grounded and to verify claims. Do not display raw locator strings in the final learner page. Avoid visible labels such as `S1`, `Source:`, `metadata`, `p. 12`, or `pp. 8-25`.
+
+When the learner needs confidence without technical labels, fold provenance into natural language:
+
+```text
+The early progress-report entries show...
+The middle chapters shift toward...
+The policy definition section narrows...
+```
 
 ## Extract Center Words
 
@@ -35,7 +43,7 @@ For each center word capture:
 ```text
 word:
 plain meaning:
-source locator:
+internal source locator:
 why it matters:
 connected words:
 common misread:
@@ -101,7 +109,7 @@ Learner should be able to say:
 Center words:
 Storyline:
 Key turns:
-Best short source anchors:
+Best short source anchors, for internal checking only:
 Long dialogue roles:
 Visual anchors:
 Teach-back scaffold:

@@ -11,7 +11,7 @@ A good teach-back scaffold includes:
 - The document's one-sentence thesis.
 - The center words.
 - The logic or storyline.
-- One concrete example or source anchor.
+- One concrete example or remembered scene/argument from the source, without page-number tags.
 - The main caveat or misread risk.
 - A final "so what" statement.
 
@@ -34,7 +34,7 @@ Use this structure:
 1. One-sentence premise.
 2. Three center words and what each does.
 3. The logic/storyline in 4-5 beats.
-4. One example or source anchor.
+4. One example or remembered scene/argument from the source, without page-number tags.
 5. One caveat.
 6. Final takeaway.
 
@@ -59,7 +59,7 @@ Ask questions that make the learner produce language:
 - Can I connect the center words in one sentence?
 - Can I name the key turn where my understanding changed?
 - Can I explain the main caveat without weakening the whole point?
-- Can I give one example from the source with a locator?
+- Can I give one example from the source without copying its wording or reciting page numbers?
 
 ## Avoid Saying It This Way
 

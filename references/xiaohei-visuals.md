@@ -24,7 +24,14 @@ Avoid visuals for:
 
 ## Default Output
 
-If the user did not explicitly ask to generate images, provide a shot list inside the summary page:
+If the user did not explicitly ask to generate images, do not include a visible Xiaohei section or shot list in the summary page. Use neutral learner-facing visual anchors instead, such as:
+
+- a concept map
+- a timeline
+- a before/after comparison
+- a key-turn card row
+
+You may keep an internal planning note like this while building, but do not render it in the page:
 
 ```text
 Visual 1:
@@ -36,11 +43,11 @@ suggested elements:
 suggested Chinese labels:
 ```
 
-Use 1-3 visuals for normal documents. Use 3-5 only for long books, rich essays, or multi-document sets.
+Use 1-3 visual anchors for normal documents. Use 3-5 only for long books, rich essays, or multi-document sets.
 
 ## Generating Images
 
-If the user explicitly asks to generate images or "use Xiaohei skill to draw", use the `ian-xiaohei-illustrations` skill if available:
+If the user explicitly asks to generate images, asks to use Xiaohei, or says "use Xiaohei skill to draw", use the `ian-xiaohei-illustrations` skill if available:
 
 1. Read its `SKILL.md`.
 2. Read only the relevant references it names.
@@ -52,6 +59,8 @@ assets/<summary-slug>-illustrations/
 ```
 
 5. Reference saved images in the summary page with relative paths.
+
+Do not leave prompt text or a shot list as a substitute for images when the user asked to generate images.
 
 ## Prompt Requirements
 
