@@ -1,13 +1,13 @@
 ---
 name: document-to-study-summary
-description: "Turn documents, PDFs, DOCX files, Markdown notes, web pages, reports, courses, novels, essays, manuals, or document folders into a concise source-grounded study summary page. Use when someone wants to quickly understand a document, extract central words or themes, connect ideas in a logical or narrative storyline, make a clean visual learning summary, create a longer dialogue-style explanation, identify the learner's reading purpose, avoid common misreadings, practice an interactive teach-back/retell mode, optionally generate Xiaohei-style images when explicitly requested, or help the learner retell the document in their own words."
+description: "Turn documents, PDFs, DOCX files, Markdown notes, web pages, reports, courses, novels, essays, manuals, or document folders into a concise source-grounded study summary page. Use when someone wants to quickly understand a document, extract central words or themes, connect ideas in a logical or narrative storyline, make a clean visual learning summary with memory-anchor images, create a longer dialogue-style explanation, identify the learner's reading purpose, avoid common misreadings, practice an interactive teach-back/retell mode, optionally generate Xiaohei-style memory-anchor images when explicitly requested, or help the learner retell the document in their own words."
 ---
 
 # Document To Study Summary
 
 Transform one document, a document set, or an existing generated course into a compact, browser-openable learning summary. The goal is fast understanding and teach-back: after reading the page, the learner should be able to explain the document in their own words.
 
-This skill ships with its own browser page shell and interaction assets, adapted from the course shell but tuned for study summaries: reading purpose, central words, logical storyline, long dialogue, misread prevention, visual anchors, and retell practice.
+This skill ships with its own browser page shell and interaction assets, adapted from the course shell but tuned for study summaries: reading purpose, central words, logical storyline, long dialogue, misread prevention, memory anchors, and retell practice.
 
 ## First-Run Welcome
 
@@ -58,7 +58,7 @@ Characters/actors/roles:
 Tensions or tradeoffs:
 Misread risks:
 Teach-back target:
-Suggested visuals:
+Memory anchors:
 ```
 
 The central words are not just frequent terms. They are words or phrases that carry the document's meaning, conflict, method, plot, or decision logic.
@@ -75,17 +75,19 @@ Default structure: 4-6 sections, not a full course.
 4. **Misread Risks**: a fixed "do not understand it this way" section with better wording.
 5. **Retell Mode**: interactive teach-back workspace with 30-second, 2-minute, and 5-minute retell scaffolds.
 
-Use concept maps, timelines, visual-anchor cards, or generated Xiaohei-style images inside the relevant section only when they help memory or retelling.
+Use memory anchors inside the relevant section only when they help the learner remember and retell a center word, storyline turn, contradiction, or misread warning. A visual is never "just a picture"; it must have a named memory job.
 
 For layout and interaction patterns, read `references/page-design.md`.
 
-### Phase 4: Optional Xiaohei Illustrations
+### Phase 4: Memory Anchors And Optional Xiaohei Images
 
-Use Xiaohei-style illustrations only when they help the learner remember a central idea, turn, contradiction, or storyline.
+Treat every visual as a memory anchor. Use Xiaohei-style illustrations only when they help the learner remember a central idea, turn, contradiction, storyline, or misread warning.
 
 - If the user asks for images or specifically asks to use the Xiaohei illustration skill, use the `ian-xiaohei-illustrations` skill if available. Read its `SKILL.md` and relevant references before generating images.
-- If the user did not explicitly ask to generate images, do not include a visible "Xiaohei", "小黑配图", or "Shot List" section in the page. Use a concept map, timeline, or plain visual-anchor cards instead.
-- Do not decorate every section. Choose 1-3 visual anchors for short summaries and 3-5 for long documents.
+- Before generating an image, define its memory job in one sentence: "This image helps the learner remember..."
+- If the user did not explicitly ask to generate images, do not include a visible "Xiaohei", "小黑配图", or "Shot List" section in the page. Use a concept map, timeline, or plain memory-anchor cards instead.
+- Do not decorate every section. Choose 1-3 memory anchors for short summaries and 3-5 for long documents.
+- Place each generated image next to the section it reinforces, with a short learner-facing caption explaining what to remember.
 
 For visual selection rules, read `references/xiaohei-visuals.md`.
 
@@ -121,7 +123,8 @@ Final checks:
 - A fixed misread-risk section prevents shallow or wrong summaries.
 - The final retell mode helps the learner draft, check, and improve their own explanation without copying wording.
 - Important claims were checked against source locators internally, but the final page does not expose page numbers or raw source tags.
-- Optional images serve memory, not decoration, and are generated only after the user asks for them.
+- Optional images serve as memory anchors, not decoration, and are generated only after the user asks for them.
+- Every visual has a visible learner-facing caption that names what it helps the learner remember.
 - Chat controls such as Next Message, Play All, and Reset match the page's visual style; never leave browser-default buttons in the final page.
 - `index.html` opens without a dev server.
 
@@ -130,7 +133,7 @@ Final checks:
 - `references/analysis-and-center-words.md`: how to extract central words, logical/narrative turns, source anchors, and misread risks.
 - `references/purpose-and-modes.md`: how to infer reading purpose and adapt summary emphasis.
 - `references/page-design.md`: summary page structure, reusable components, long dialogue pattern, and build rules.
-- `references/xiaohei-visuals.md`: when to use Xiaohei illustrations, shot list format, and image-generation handoff.
+- `references/xiaohei-visuals.md`: how to choose memory anchors, when to use Xiaohei images, and how to hand off image generation.
 - `references/teach-back.md`: final retell scaffolds, self-checks, and "say it in your own words" patterns.
 - `references/styles.css`: bundled page styles; copy verbatim into each generated summary.
 - `references/main.js`: bundled interaction runtime; copy verbatim into each generated summary.

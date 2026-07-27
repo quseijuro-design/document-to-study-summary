@@ -136,13 +136,41 @@ End with an interactive retell workspace, not only static text. It should includ
 
 Use the `.retell-workbench` component pattern described below.
 
-## Visual Anchors
+## Memory Anchors
 
-Include a simple concept map, timeline, comparison strip, or visual-anchor cards only when it helps memory or retelling.
+Include a simple concept map, timeline, comparison strip, memory-anchor cards, or generated images only when it helps memory or retelling.
 
 Generated Xiaohei-style images are allowed only when the user explicitly asks for images or asks to use the Xiaohei illustration skill.
 
-Do not include a visible "Xiaohei", "小黑配图", or "Shot List" section by default. If images are generated, present the images where they support the corresponding center word or storyline turn.
+Do not include a visible "Xiaohei", "小黑配图", or "Shot List" section by default. If images are generated, present each image where it supports the corresponding center word, storyline turn, misread risk, or retell prompt.
+
+Each memory anchor should include:
+
+- the thing to remember
+- why it matters
+- one sentence the learner can use while retelling
+
+Use this pattern for non-image anchors:
+
+```html
+<div class="memory-anchor-card">
+  <strong>记住这个画面：...</strong>
+  <p>它帮你抓住：...</p>
+  <p class="retell-line">复述时可以说：...</p>
+</div>
+```
+
+Use this pattern for generated images:
+
+```html
+<figure class="memory-anchor-image">
+  <img src="assets/summary-illustrations/anchor-01.png" alt="...">
+  <figcaption>
+    <strong>记住这个画面：...</strong>
+    <span>它帮你复述：...</span>
+  </figcaption>
+</figure>
+```
 
 ## Component Patterns
 
@@ -160,6 +188,8 @@ Add these summary-specific components:
 
 - `purpose-strip`: compact reading-purpose orientation near the top.
 - `word-map`: center-word chain from starting point to conclusion.
+- `memory-anchor-card`: text-only memory cue for a center word or turn.
+- `memory-anchor-image`: generated image plus caption explaining the memory job.
 - `misread-grid` and `misread-card`: fixed "do not say / better / why" section.
 - `retell-workbench`: textarea plus checklist for speakable retell practice.
 
@@ -222,5 +252,6 @@ The reused shell may include default browser buttons for chat playback. Replace 
 - The retell mode includes visible self-evaluation feedback, not only a textarea and checklist.
 - The page does not show raw source ids, page numbers, metadata labels, or citation tags.
 - The page does not show a Xiaohei shot-list section unless the user explicitly requested image-generation planning.
+- Any visual or generated image has a clear memory job and is placed next to the idea it anchors.
 - Text fits on desktop and mobile.
 - The page opens from `index.html` without a server.

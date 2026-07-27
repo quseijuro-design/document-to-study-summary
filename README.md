@@ -16,7 +16,7 @@ The generated summary focuses on:
 - key turns where understanding changes
 - longer dialogue-style explanation
 - a fixed misread-risk section
-- clean visual anchors, with Xiaohei-style images only when explicitly requested
+- memory anchors, with Xiaohei-style images only when they help retelling and are explicitly requested
 - an interactive retell mode with 30-second, 2-minute, and 5-minute teach-back scaffolds
 
 It is intentionally shorter than a full course. If `document-to-course` is for learning step by step, this skill is for quickly grasping the document and retelling it clearly.
@@ -28,7 +28,7 @@ The screenshot below shows a summary generated from *Flowers for Algernon*.
 ![Flowers for Algernon summary preview](docs/images/flowers-summary-preview.png)
 
 The page starts with a small set of center words, then connects them into a storyline, uses a longer dialogue to resolve likely misunderstandings, and ends with a practical retell scaffold.
-It also identifies the learner's reading purpose, warns against shallow misreadings, and gives the learner a small workspace to rehearse the explanation in their own words.
+It also identifies the learner's reading purpose, uses visuals as memory anchors rather than decoration, warns against shallow misreadings, and gives the learner a small workspace to rehearse the explanation in their own words.
 
 ## Skill Contents
 
@@ -117,6 +117,7 @@ The final `index.html` opens directly in a browser. No dev server is required.
 - Extract center words by meaning, not just frequency.
 - Show the logic or narrative movement before details.
 - Use dialogue to clarify confusion, not as decoration.
+- Treat visuals as memory anchors tied to center words, storyline turns, misread risks, or retell prompts.
 - Always include a "do not misread this" section.
 - End with an interactive retell mode so the learner can rehearse their own explanation.
 - Keep the learner-facing page free of raw source tags, page-number markers, and metadata labels.
