@@ -1,0 +1,4 @@
+interface:
+  display_name: "Document to Study Summary"
+  short_description: "Turn documents into concise speakable study summaries"
+  default_prompt: "Use $document-to-study-summary to turn this document into a concise learning summary page I can explain in my own words."
