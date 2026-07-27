@@ -26,6 +26,7 @@ If the user says "this document", "this course", "this page", or similar, use th
 - For copyrighted long-form works, do not reconstruct the whole source as a substitute for reading it. Teach structure, themes, logic, and selected short anchors.
 - Track source locators internally: file name, heading, PDF page, module title, section title, or URL.
 - Do not show technical source labels in the final learner page, such as `S1`, `p. 6`, `pp. 8-25`, `Source:`, `metadata`, or raw locator tags. Use source locators for grounding and verification, not as visible study-summary copy.
+- Do not show page-building commentary in the final learner page. Visible copy should explain the document, not the implementation. Avoid words such as `2x2`, `layout`, `grid`, `style`, `CSS`, `HTML`, `component`, `fixed`, or notes about how a section was designed unless those words are part of the source itself.
 - Separate source facts from interpretation when the distinction matters.
 - Make the output concise enough to scan, but rich enough to support retelling.
 - Build the summary page after analysis; do not stop at an outline unless the user asks for one.
@@ -126,6 +127,10 @@ Final checks:
 - Optional images serve as memory anchors, not decoration, and are generated only after the user asks for them.
 - Every visual has a visible learner-facing caption that names what it helps the learner remember.
 - Chat controls such as Next Message, Play All, and Reset match the page's visual style; never leave browser-default buttons in the final page.
+- Concept diagrams, argument maps, and memory anchors are checked at desktop and narrow widths. If shrinking breaks the visual argument, rearrange it responsively instead of only scaling it down.
+- Four peer cards use a balanced two-by-two layout on desktop and tablet, then collapse to one column on small mobile screens. Avoid loose three-plus-one rows.
+- Run a reader-copy noise scan: the final `index.html` must not contain implementation notes such as `2x2`, `layout`, `grid`, `style`, `CSS`, `HTML`, `component`, or `fixed` when they refer to the page rather than the document.
+- Audit the whole page after each visual/style change, including the first screen, section transitions, diagrams, card grids, chat controls, retell checklist, retell evaluation, and mobile overflow.
 - `index.html` opens without a dev server.
 
 ## Reference Files

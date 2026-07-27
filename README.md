@@ -118,6 +118,10 @@ The final `index.html` opens directly in a browser. No dev server is required.
 - Show the logic or narrative movement before details.
 - Use dialogue to clarify confusion, not as decoration.
 - Treat visuals as memory anchors tied to center words, storyline turns, misread risks, or retell prompts.
+- Use responsive visual argument maps for abstract concepts instead of forcing every document into a linear flow.
+- Keep four peer cards in a balanced two-by-two layout on desktop/tablet, then collapse them cleanly on mobile.
+- Style chat controls, retell prompts, checklist cards, score panels, and comparison callouts as part of the page instead of leaving browser-default controls.
+- Keep learner-facing copy about the document itself; do not leak implementation notes such as layout, CSS, components, or fixed grid choices into the summary page.
 - Always include a "do not misread this" section.
 - End with an interactive retell mode so the learner can rehearse their own explanation.
 - Keep the learner-facing page free of raw source tags, page-number markers, and metadata labels.

@@ -331,6 +331,7 @@
         actors[sender] = { initial: avatar.textContent.trim(), style: avatar.style.background };
       }
     });
+    messages.forEach(m => { m.style.display = 'none'; m.style.animation = ''; });
 
     function updateProgress() {
       if (progressEl) progressEl.textContent = index + ' / ' + messages.length + ' messages';

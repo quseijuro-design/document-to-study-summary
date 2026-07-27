@@ -85,6 +85,8 @@ Use one of:
 
 Keep it tight. A summary page should reveal the skeleton, not rebuild every paragraph.
 
+When the source is conceptual, argumentative, philosophical, legal, or policy-heavy, prefer a visual argument map over a narrow linear flow. Put the central concept in the middle, show the pressure or tension on both sides, and place the synthesis or learner takeaway below it. At narrow widths, rearrange the map into a readable order instead of simply shrinking it.
+
 ### 3. Long Dialogue Understanding
 
 Make dialogue longer than `document-to-course` when deeper digestion helps.
@@ -192,6 +194,61 @@ Add these summary-specific components:
 - `memory-anchor-image`: generated image plus caption explaining the memory job.
 - `misread-grid` and `misread-card`: fixed "do not say / better / why" section.
 - `retell-workbench`: textarea plus checklist for speakable retell practice.
+- `justice-diagram`: responsive visual argument map for a central idea, two tensions, and the rule/lesson that holds them together.
+- `logic-beats`: compact post-diagram beats that explain how the argument moves.
+- `balanced-grid`: exactly four peer cards in a stable two-by-two desktop/tablet layout, collapsing to one column on small mobile screens.
+- `comparison-callout`: final sample phrasing with a short side label and source-grounded body text.
+
+## Reader-Facing Copy
+
+Everything visible on the generated page should help the learner understand the source document.
+
+Do not expose implementation or design commentary in the learner-facing page. Avoid text such as:
+
+- "fixed 2x2"
+- "this grid/layout"
+- "this section is designed to"
+- "the CSS/component/style"
+- "top three, bottom one"
+
+Those notes belong in the skill, not in the study summary. Section subtitles, captions, checklist labels, and sample retell copy should all talk about the document's meaning, logic, examples, risks, and application.
+
+## Responsive Visual Arguments
+
+Use `.justice-diagram` when a document turns on an abstract center idea and opposing pressures. It is useful for law, ethics, governance, philosophy, strategy, and dense essays.
+
+Recommended structure:
+
+```html
+<div class="justice-diagram" role="img" aria-label="...">
+  <div class="diagram-title">...</div>
+  <div class="diagram-side diagram-left">...</div>
+  <div class="diagram-center">...</div>
+  <div class="diagram-side diagram-right">...</div>
+  <div class="diagram-law">...</div>
+</div>
+```
+
+Design rules:
+
+- Desktop: center the main idea visually; put the two tensions on left and right; put the synthesis below.
+- Tablet: keep the center idea above the two tension cards, then the synthesis below.
+- Mobile: stack in reading order with no horizontal overflow.
+- Use `scroll-margin-top` on targetable visual blocks so sticky navigation does not cover selected elements.
+- Check the diagram at desktop, around 614px, and around 390px. The center concept should stay centered inside its container at every width.
+
+## Balanced Card Grids
+
+For exactly four peer items, use `.balanced-grid` instead of a generic auto-fit grid. A three-plus-one card layout looks accidental and makes one item feel secondary.
+
+Use balanced grids for:
+
+- four misread risks
+- four retell checklist items
+- four comparison points
+- four role or argument cards with equal importance
+
+Only use three columns when there are exactly three items or when one item is intentionally featured separately.
 
 ## Retell Workbench Markup
 
@@ -220,6 +277,7 @@ Use this shape when building the final module:
     <div class="retell-score">
       <span class="retell-score-value">0</span>
       <span class="retell-score-label">retell score</span>
+      <span class="retell-score-hint">先写一段，再看缺了什么</span>
     </div>
     <ul class="retell-feedback">
       <li class="todo" data-label="中心词" data-keywords="...">• 中心词</li>
@@ -228,6 +286,10 @@ Use this shape when building the final module:
       <li class="todo" data-label="误读风险" data-keywords="...">• 误读风险</li>
     </ul>
   </div>
+</div>
+<div class="comparison-callout">
+  <div class="comparison-label">可以对照，但不要照抄</div>
+  <p>...</p>
 </div>
 ```
 
@@ -253,5 +315,9 @@ The reused shell may include default browser buttons for chat playback. Replace 
 - The page does not show raw source ids, page numbers, metadata labels, or citation tags.
 - The page does not show a Xiaohei shot-list section unless the user explicitly requested image-generation planning.
 - Any visual or generated image has a clear memory job and is placed next to the idea it anchors.
+- The page does not contain learner-facing implementation notes such as `2x2`, `layout`, `grid`, `style`, `CSS`, `HTML`, `component`, or `fixed` unless those words come from the source itself.
+- Four peer cards are balanced as two-by-two on desktop/tablet and one column on small mobile screens.
+- Concept diagrams are checked at desktop, around 614px, and around 390px; no label is clipped, the center idea remains centered, and the diagram has no horizontal overflow.
+- Chat controls, retell prompt buttons, checklist cards, retell feedback, comparison callouts, and transitions use the page style instead of browser-default controls.
 - Text fits on desktop and mobile.
 - The page opens from `index.html` without a server.

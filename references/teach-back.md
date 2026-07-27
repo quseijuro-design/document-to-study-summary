@@ -60,6 +60,8 @@ Make the final section interactive when building HTML. Include:
 
 The retell mode is not a perfect auto-grader. It is a rehearsal surface that gives lightweight evidence: which core ingredients appear, which are missing, and whether the explanation is long enough to carry a complete thought.
 
+Keep all visible evaluation labels learner-facing and source-facing. The panel should say what the retell includes or misses, such as center words, storyline, concrete example, caveat, and "so what". It should not mention implementation details, layout decisions, CSS, components, or the way the page was built.
+
 ## Self-Check Questions
 
 Ask questions that make the learner produce language:
