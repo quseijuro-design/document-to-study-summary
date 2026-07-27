@@ -4,7 +4,7 @@ Use this reference when building the study summary page.
 
 ## Output Shape
 
-Default output is a browser-openable directory that reuses the `codebase-to-course` shell:
+Default output is a browser-openable directory that uses this skill's bundled shell:
 
 ```text
 summary-name/
@@ -23,12 +23,12 @@ summary-name/
 
 Use `modules/` even though the output is a summary, because the shell expects module sections.
 
-## Preferred Asset Source
+## Bundled Asset Source
 
-Reuse these files from:
+Copy these files from this skill's own `references/` directory:
 
 ```text
-C:\Users\midor\.codex\skills\codebase-to-course-main\references\
+document-to-study-summary/references/
 ```
 
 Copy:
@@ -54,7 +54,7 @@ If Bash is unavailable, assemble `index.html` by concatenating `_base.html`, sor
 Start with a direct promise:
 
 ```text
-读完这页，你应该能用自己的话讲清楚：...
+读完这一页，你应该能用自己的话讲清楚：...
 ```
 
 Then show 5-9 center words as cards. Each card should include:

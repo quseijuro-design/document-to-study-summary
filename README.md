@@ -35,8 +35,13 @@ document-to-study-summary/
   agents/
     openai.yaml
   references/
+    _base.html
+    _footer.html
     analysis-and-center-words.md
+    build.sh
+    main.js
     page-design.md
+    styles.css
     teach-back.md
     xiaohei-visuals.md
 ```

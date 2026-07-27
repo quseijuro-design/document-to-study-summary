@@ -7,7 +7,7 @@ description: "Turn documents, PDFs, DOCX files, Markdown notes, web pages, repor
 
 Transform one document, a document set, or an existing generated course into a compact, browser-openable learning summary. The goal is fast understanding and teach-back: after reading the page, the learner should be able to explain the document in their own words.
 
-This skill borrows the page shell and interaction style from `document-to-course`, but compresses the output into a summary-oriented experience: central words, logical storyline, long dialogue, visual anchors, and retell practice.
+This skill ships with its own browser page shell and interaction assets, adapted from the course shell but tuned for study summaries: central words, logical storyline, long dialogue, visual anchors, and retell practice.
 
 ## First-Run Welcome
 
@@ -86,7 +86,7 @@ For visual selection rules, read `references/xiaohei-visuals.md`.
 
 ### Phase 5: Build And Review
 
-Build a browser-openable directory using the `codebase-to-course` shell when present:
+Build a browser-openable directory using this skill's bundled shell files:
 
 ```text
 summary-name/
@@ -103,7 +103,7 @@ summary-name/
   index.html
 ```
 
-Read `references/page-design.md` before building. Reuse existing `styles.css` and `main.js`; do not regenerate them unless unavailable.
+Read `references/page-design.md` before building. Copy `styles.css`, `main.js`, `_footer.html`, and `build.sh` from this skill's `references/` directory. Customize `_base.html` from this skill's `references/` directory for the summary title, palette, language, and nav dots.
 
 Final checks:
 
@@ -123,3 +123,8 @@ Final checks:
 - `references/page-design.md`: summary page structure, reusable components, long dialogue pattern, and build rules.
 - `references/xiaohei-visuals.md`: when to use Xiaohei illustrations, shot list format, and image-generation handoff.
 - `references/teach-back.md`: final retell scaffolds, self-checks, and "say it in your own words" patterns.
+- `references/styles.css`: bundled page styles; copy verbatim into each generated summary.
+- `references/main.js`: bundled interaction runtime; copy verbatim into each generated summary.
+- `references/_base.html`: bundled HTML shell; customize only documented placeholders.
+- `references/_footer.html`: bundled closing shell; copy verbatim.
+- `references/build.sh`: bundled assembly script for `index.html`.
