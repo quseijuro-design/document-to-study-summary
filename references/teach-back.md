@@ -20,11 +20,7 @@ A good teach-back scaffold includes:
 Use this template:
 
 ```text
-这份材料主要讲的是 [central thesis]。
-它靠 [2-3 center words] 串起来。
-先是 [starting point]，然后 [turn/change]，最后落到 [main implication]。
-最容易误读的是 [misread risk]。
-所以我会把它理解成 [my words].
+这份材料主要讲的是 [central thesis]。它靠 [2-3 center words] 串起来。先是 [starting point]，然后 [turn/change]，最后落到 [main implication]。最容易误读的是 [misread risk]。所以我会把它理解成 [my words].
 ```
 
 ## 2-Minute Version
@@ -50,6 +46,18 @@ Turn: where the reader's understanding changes.
 Caveat: what not to overclaim.
 Application: how I would use or explain this now.
 ```
+
+## Retell Mode
+
+Make the final section interactive when building HTML. Include:
+
+- One textarea for the learner's own words.
+- Three prompt buttons: 30 seconds, 2 minutes, 5 minutes.
+- A checklist that the learner can mark after drafting.
+- A character or word count.
+- A short "compare against this, do not copy it" sample.
+
+The retell mode is not an auto-grader. It is a rehearsal surface that helps the learner notice whether their explanation contains the core ingredients.
 
 ## Self-Check Questions
 

@@ -495,4 +495,44 @@
     btn.classList.add('active');
   };
 
+  /* STUDY SUMMARY RETELL WORKBENCH */
+  function initRetell(workbench) {
+    const input = $('.retell-input', workbench);
+    const count = $('.retell-count', workbench);
+    const progress = $('.retell-progress', workbench);
+    const currentPrompt = $('.retell-current-prompt', workbench);
+    const target = Number(workbench.dataset.retellTarget || 120);
+    const prompts = {
+      '30s': 'Use one sentence for the thesis, two or three center words, and one misread to avoid.',
+      '2m': 'Explain the premise, connect three center words, name the key turn, then add one caveat.',
+      '5m': 'Open with why it matters, map the center words, walk the path, name the turn, add the caveat, and end with how you would use this understanding.'
+    };
+
+    function update() {
+      if (!input) return;
+      const text = input.value.trim();
+      const chars = text.length;
+      if (count) count.textContent = chars + ' characters';
+      if (!progress) return;
+      if (chars === 0) progress.textContent = 'Start with the thesis.';
+      else if (chars < target * 0.4) progress.textContent = 'Add the center words and storyline.';
+      else if (chars < target) progress.textContent = 'Now add a caveat or misread risk.';
+      else progress.textContent = 'Good length. Check whether it sounds like your own words.';
+    }
+
+    $$('.retell-prompt-btn', workbench).forEach(btn => {
+      btn.addEventListener('click', () => {
+        $$('.retell-prompt-btn', workbench).forEach(b => b.classList.remove('btn-primary'));
+        btn.classList.add('btn-primary');
+        if (currentPrompt) currentPrompt.textContent = prompts[btn.dataset.prompt] || btn.dataset.prompt || '';
+        if (input) input.focus();
+      });
+    });
+
+    if (input) input.addEventListener('input', update);
+    update();
+  }
+
+  $$('.retell-workbench').forEach(el => initRetell(el));
+
 })();

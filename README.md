@@ -11,11 +11,13 @@ Use this skill when you want to turn a PDF, DOCX file, Markdown note, article, r
 The generated summary focuses on:
 
 - central words and themes
+- inferred reading purpose and learner outcome
 - the document's logic or narrative storyline
 - key turns where understanding changes
 - longer dialogue-style explanation
+- a fixed misread-risk section
 - clean visual anchors, with Xiaohei-style images only when explicitly requested
-- 30-second, 2-minute, and 5-minute teach-back scaffolds
+- an interactive retell mode with 30-second, 2-minute, and 5-minute teach-back scaffolds
 
 It is intentionally shorter than a full course. If `document-to-course` is for learning step by step, this skill is for quickly grasping the document and retelling it clearly.
 
@@ -26,6 +28,7 @@ The screenshot below shows a summary generated from *Flowers for Algernon*.
 ![Flowers for Algernon summary preview](docs/images/flowers-summary-preview.png)
 
 The page starts with a small set of center words, then connects them into a storyline, uses a longer dialogue to resolve likely misunderstandings, and ends with a practical retell scaffold.
+It also identifies the learner's reading purpose, warns against shallow misreadings, and gives the learner a small workspace to rehearse the explanation in their own words.
 
 ## Skill Contents
 
@@ -41,6 +44,7 @@ document-to-study-summary/
     build.sh
     main.js
     page-design.md
+    purpose-and-modes.md
     styles.css
     teach-back.md
     xiaohei-visuals.md
@@ -95,10 +99,11 @@ summary-name/
   _footer.html
   build.sh
   modules/
-    01-center-words.html
+    01-purpose-center-words.html
     02-storyline.html
     03-dialogue.html
-    04-teach-back.html
+    04-misread-risks.html
+    05-retell-mode.html
   index.html
 ```
 
@@ -107,10 +112,13 @@ The final `index.html` opens directly in a browser. No dev server is required.
 ## Design Principles
 
 - Keep every substantive point grounded in the source.
+- Infer the learner's reading purpose and adapt the summary emphasis.
 - Avoid rebuilding copyrighted long-form works as substitutes for the original.
 - Extract center words by meaning, not just frequency.
 - Show the logic or narrative movement before details.
 - Use dialogue to clarify confusion, not as decoration.
+- Always include a "do not misread this" section.
+- End with an interactive retell mode so the learner can rehearse their own explanation.
 - Keep the learner-facing page free of raw source tags, page-number markers, and metadata labels.
 - Do not show a Xiaohei shot list by default; generate Xiaohei-style images only when the user explicitly asks for them.
 - End with teach-back scaffolds so the learner can retell the document.

@@ -1,13 +1,13 @@
 ---
 name: document-to-study-summary
-description: "Turn documents, PDFs, DOCX files, Markdown notes, web pages, reports, courses, novels, essays, manuals, or document folders into a concise source-grounded study summary page. Use when someone wants to quickly understand a document, extract central words or themes, connect ideas in a logical or narrative storyline, make a clean visual learning summary, create a longer dialogue-style explanation, optionally generate Xiaohei-style images when explicitly requested, or help the learner retell the document in their own words."
+description: "Turn documents, PDFs, DOCX files, Markdown notes, web pages, reports, courses, novels, essays, manuals, or document folders into a concise source-grounded study summary page. Use when someone wants to quickly understand a document, extract central words or themes, connect ideas in a logical or narrative storyline, make a clean visual learning summary, create a longer dialogue-style explanation, identify the learner's reading purpose, avoid common misreadings, practice an interactive teach-back/retell mode, optionally generate Xiaohei-style images when explicitly requested, or help the learner retell the document in their own words."
 ---
 
 # Document To Study Summary
 
 Transform one document, a document set, or an existing generated course into a compact, browser-openable learning summary. The goal is fast understanding and teach-back: after reading the page, the learner should be able to explain the document in their own words.
 
-This skill ships with its own browser page shell and interaction assets, adapted from the course shell but tuned for study summaries: central words, logical storyline, long dialogue, visual anchors, and retell practice.
+This skill ships with its own browser page shell and interaction assets, adapted from the course shell but tuned for study summaries: reading purpose, central words, logical storyline, long dialogue, misread prevention, visual anchors, and retell practice.
 
 ## First-Run Welcome
 
@@ -49,6 +49,7 @@ Create a compact internal map:
 
 ```text
 Source promise:
+Reading purpose:
 Learner outcome:
 Central words:
 Logic/storyline:
@@ -62,15 +63,19 @@ Suggested visuals:
 
 The central words are not just frequent terms. They are words or phrases that carry the document's meaning, conflict, method, plot, or decision logic.
 
+Infer the reading purpose from the user's request and source type. Use `general quick understanding` when unclear; do not stop to ask unless the purpose would materially change the deliverable. Read `references/purpose-and-modes.md` for purpose profiles and output emphasis.
+
 ### Phase 3: Design The Summary Page
 
-Default structure: 3-5 sections, not a full course.
+Default structure: 4-6 sections, not a full course.
 
-1. **Center Words**: the few terms that unlock the document.
+1. **Purpose And Center Words**: the learner's purpose, promised outcome, and the few terms that unlock the document.
 2. **Logic Or Storyline**: a because/therefore chain, argument path, process, or narrative arc.
 3. **Long Dialogue**: 8-14 short messages between learner, explainer, skeptic, author, practitioner, character, or domain expert.
-4. **Visual Anchors**: concept map, timeline, or generated Xiaohei-style images only when explicitly requested.
-5. **Teach-Back**: 30-second, 2-minute, and 5-minute retell scaffolds.
+4. **Misread Risks**: a fixed "do not understand it this way" section with better wording.
+5. **Retell Mode**: interactive teach-back workspace with 30-second, 2-minute, and 5-minute retell scaffolds.
+
+Use concept maps, timelines, visual-anchor cards, or generated Xiaohei-style images inside the relevant section only when they help memory or retelling.
 
 For layout and interaction patterns, read `references/page-design.md`.
 
@@ -96,10 +101,11 @@ summary-name/
   _footer.html
   build.sh
   modules/
-    01-center-words.html
+    01-purpose-center-words.html
     02-storyline.html
     03-dialogue.html
-    04-teach-back.html
+    04-misread-risks.html
+    05-retell-mode.html
   index.html
 ```
 
@@ -108,10 +114,12 @@ Read `references/page-design.md` before building. Copy `styles.css`, `main.js`, 
 Final checks:
 
 - The page can be understood in 3-7 minutes.
+- The first screen identifies or implies the reading purpose and learner outcome.
 - Center words appear near the top.
 - Logic/storyline is visible before details.
 - Dialogue is long enough to resolve confusion, not just decorative.
-- The final section helps the learner explain the document without copying wording.
+- A fixed misread-risk section prevents shallow or wrong summaries.
+- The final retell mode helps the learner draft, check, and improve their own explanation without copying wording.
 - Important claims were checked against source locators internally, but the final page does not expose page numbers or raw source tags.
 - Optional images serve memory, not decoration, and are generated only after the user asks for them.
 - Chat controls such as Next Message, Play All, and Reset match the page's visual style; never leave browser-default buttons in the final page.
@@ -120,6 +128,7 @@ Final checks:
 ## Reference Files
 
 - `references/analysis-and-center-words.md`: how to extract central words, logical/narrative turns, source anchors, and misread risks.
+- `references/purpose-and-modes.md`: how to infer reading purpose and adapt summary emphasis.
 - `references/page-design.md`: summary page structure, reusable components, long dialogue pattern, and build rules.
 - `references/xiaohei-visuals.md`: when to use Xiaohei illustrations, shot list format, and image-generation handoff.
 - `references/teach-back.md`: final retell scaffolds, self-checks, and "say it in your own words" patterns.
